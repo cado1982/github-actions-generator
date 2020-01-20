@@ -1,0 +1,22 @@
+<form name="editorForm">
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="generator.input.name" (ngModelChange)="onModelChange()">
+
+    <h4>Events</h4>
+    <button (click)="generator.addEvent()">Add event</button>
+    <div style="border: solid 1px black; padding: 5px;" *ngFor="let event of generator.input.on">
+        <label>Event</label>
+        <select [(ngModel)]="event.type" name="type">
+            <option *ngFor="let t of generator.types" [ngValue]="t">{{t.displayName}}</option>
+        </select>
+        <br />
+        <label>Types</label>
+        <select name="types" multiple [(ngModel)]="event.types">
+            <option *ngFor="let c of event.type?.types" [ngValue]="c">{{c}}</option>
+        </select>
+        <pre>{{event.type | json}}</pre>
+    </div>
+</form>
+
+<h4>generator.input</h4>
+<pre>{{generator.input | json}}</pre>
