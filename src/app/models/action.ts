@@ -1,12 +1,12 @@
 import { GithubEvent } from './event';
 import * as YAML from 'yaml';
-import { EnvironmentVariable } from './environmentVariable';
+import { KeyValuePair } from './keyValuePair';
 import { GithubJob } from './job';
 
 export class GithubAction {
     public name: string;
     public on: GithubEvent[] = [];
-    public env: EnvironmentVariable[] = [];
+    public env: KeyValuePair[] = [];
     public jobs: GithubJob[] = [];
 
     public getObject() {

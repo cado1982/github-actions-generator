@@ -1,4 +1,0 @@
-<h4>Environment Variables</h4>
-<button (click)="add.emit()">Add environment variable</button>
-<br />
-<app-editor-environment *ngFor="let env of environments" [environment]="env" (remove)="remove.emit($event)"></app-editor-environment>

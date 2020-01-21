@@ -19,8 +19,14 @@
     <label>Shell</label>
     <input [(ngModel)]="step.shell">
     <br />
-    
     <label>If</label>
     <input [(ngModel)]="step.if">
-    <app-editor-environments [environments]="step.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-environments>
+    <br />
+    <label>Continue on error</label>
+    <input type="checkbox" [(ngModel)]="step.continueOnError">
+    <br />
+    <h4>With</h4>
+    <app-editor-job-step-with [with]="step.with"></app-editor-job-step-with>
+    
+    <app-editor-keyvaluepairs [values]="step.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
 </div>

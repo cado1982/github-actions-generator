@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditorEnvironmentsComponent } from './editor-environments.component';
+import { EditorJobStepWithComponent } from './editor-job-step-with.component';
 
-describe('EditorEnvironmentsComponent', () => {
-  let component: EditorEnvironmentsComponent;
-  let fixture: ComponentFixture<EditorEnvironmentsComponent>;
+describe('EditorJobStepWithComponent', () => {
+  let component: EditorJobStepWithComponent;
+  let fixture: ComponentFixture<EditorJobStepWithComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditorEnvironmentsComponent ]
+      declarations: [ EditorJobStepWithComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditorEnvironmentsComponent);
+    fixture = TestBed.createComponent(EditorJobStepWithComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

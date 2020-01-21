@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { GithubJobStep } from 'src/app/models/jobStep';
-import { EnvironmentVariable } from 'src/app/models/environmentVariable';
+import { KeyValuePair } from 'src/app/models/keyValuePair';
 
 @Component({
     selector: 'app-editor-job-step',
@@ -17,10 +17,10 @@ export class EditorJobStepComponent implements OnInit {
     }
 
     public addEnvironmentVariable(): void {
-        this.step.env.push(new EnvironmentVariable());
+        this.step.env.push(new KeyValuePair());
     }
 
-    public removeEnvironmentVariable(env: EnvironmentVariable): void {
+    public removeEnvironmentVariable(env: KeyValuePair): void {
         const indexOf = this.step.env.indexOf(env);
 
         if (indexOf !== -1) {

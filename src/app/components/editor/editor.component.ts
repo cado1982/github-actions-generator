@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneratorService } from 'src/app/services/generator.service';
 import { GithubEvent } from 'src/app/models/event';
-import { EnvironmentVariable } from 'src/app/models/environmentVariable';
+import { KeyValuePair } from 'src/app/models/keyValuePair';
 
 @Component({
     selector: 'app-editor',
@@ -26,7 +26,7 @@ export class EditorComponent implements OnInit {
         this.generator.addEnvironmentVariable();
     }
 
-    public removeEnvironmentVariable(env: EnvironmentVariable) {
+    public removeEnvironmentVariable(env: KeyValuePair) {
         this.generator.removeEnvironmentVariable(env);
     }
 }

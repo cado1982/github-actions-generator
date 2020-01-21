@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GithubJob } from 'src/app/models/job';
-import { EnvironmentVariable } from 'src/app/models/environmentVariable';
+import { KeyValuePair } from 'src/app/models/keyValuePair';
 
 @Component({
     selector: 'app-editor-job',
@@ -9,6 +9,7 @@ import { EnvironmentVariable } from 'src/app/models/environmentVariable';
 })
 export class EditorJobComponent implements OnInit {
     @Input() public job: GithubJob;
+    @Output() public remove = new EventEmitter<GithubJob>();
 
     private _needs = '';
     public get needs() {
@@ -32,7 +33,7 @@ export class EditorJobComponent implements OnInit {
         this.job.addEnvironmentVariable();
     }
 
-    public removeEnvironmentVariable(env: EnvironmentVariable): void {
+    public removeEnvironmentVariable(env: KeyValuePair): void {
         this.job.removeEnvironmentVariable(env);
     }
 

@@ -1,0 +1,8 @@
+<label>Args</label>
+<input [disabled]="with.inputParameters.length > 0" [(ngModel)]="with.args">
+<br />
+<label>Entrypoint</label>
+<input [disabled]="with.inputParameters.length > 0" [(ngModel)]="with.entrypoint">
+<br />
+<label>Input Parameters</label>
+<app-editor-keyvaluepairs [values]="with.inputParameters" (add)="addInputParameter()" (remove)="removeInputParameter($event)"></app-editor-keyvaluepairs>

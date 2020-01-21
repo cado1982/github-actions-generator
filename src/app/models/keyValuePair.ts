@@ -1,4 +1,4 @@
-export class EnvironmentVariable {
+export class KeyValuePair {
     public key = '';
     public value = '';
 

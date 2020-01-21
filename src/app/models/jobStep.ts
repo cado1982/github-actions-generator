@@ -1,4 +1,5 @@
-import { EnvironmentVariable } from './environmentVariable';
+import { KeyValuePair } from './keyValuePair';
+import { JobStepWith } from './jobStepWith';
 
 export class GithubJobStep {
     public id = '';
@@ -8,10 +9,10 @@ export class GithubJobStep {
     public run = '';
     public workingDirectory = '';
     public shell = '';
-    public with: {}[] | {entrypoint: string, args: string} | {entrypoint: string};
+    public with: JobStepWith = new JobStepWith();
     public continueOnError: boolean;
     public timeoutMinutes: number;
-    public env: EnvironmentVariable[] = [];
+    public env: KeyValuePair[] = [];
 
     public getObject(): any {
         const result: any = {};
@@ -36,11 +37,25 @@ export class GithubJobStep {
             value.shell = this.shell.trim();
         }
         if (this.env && this.env.length > 0) {
-            
+            value.env = this.env.map(e => e.getObject());
+        }
+        if (this.continueOnError) {
+            value['continue-on-error'] = true;
+        }
+        if (this.timeoutMinutes > 0) {
+            value['timeout-minutes'] = this.timeoutMinutes;
+        }
+        if (this.with) {
+            value.with = this.with.getObject();
         }
 
-        result[this.id] = value;
+        if (this.id) {
+            result[this.id] = value;
 
-        return result;
+            return result;
+        } else {
+            return value;
+        }
+        
     }
 }

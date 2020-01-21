@@ -1,16 +1,20 @@
-<form name="editorForm">
-    <label>Name</label>
-    <input type="text" name="name" [(ngModel)]="generator.input.name">
-
-    <h4>Events</h4>
-    <button (click)="generator.addEvent()">Add event</button>
-    <div style="border: solid 1px black; padding: 5px;" *ngFor="let event of generator.input.on">
-        <app-editor-event [event]="event"></app-editor-event>
-    </div>
-
-    <app-editor-environments [environments]="generator.input.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-environments>
-    <app-editor-jobs [jobs]="generator.input.jobs"></app-editor-jobs>
-</form>
-
-<h4>generator.input</h4>
-<pre>{{generator.input | json}}</pre>
+<div style="margin: 10px;">
+    <form name="editorForm">
+        <label>Name</label>
+        <input type="text" name="name" [(ngModel)]="generator.input.name">
+    
+        <h4>Events</h4>
+        <button (click)="generator.addEvent()">Add event</button>
+        <div style="border: solid 1px black; padding: 5px;" *ngFor="let event of generator.input.on">
+            <app-editor-event [event]="event"></app-editor-event>
+        </div>
+    
+        <h4>Environment Variables</h4>
+        <app-editor-keyvaluepairs [values]="generator.input.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
+        <app-editor-jobs [jobs]="generator.input.jobs"></app-editor-jobs>
+    </form>
+    
+    <h4>generator.input</h4>
+    <pre>{{generator.input | json}}</pre>
+    
+</div>

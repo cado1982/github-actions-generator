@@ -1,4 +1,4 @@
-import { EnvironmentVariable } from './environmentVariable';
+import { KeyValuePair } from './keyValuePair';
 import { GithubJobStep } from './jobStep';
 import { GithubJobStrategy } from './jobStrategy';
 import { GithubJobContainer } from './jobContainer';
@@ -8,7 +8,7 @@ export class GithubJob {
     public name = '';
     public needs: string[] = [];
     public runsOn: string;
-    public env: EnvironmentVariable[] = [];
+    public env: KeyValuePair[] = [];
     public if = '';
     public steps: GithubJobStep[] = [];
     public timeoutMinutes: number | undefined;
@@ -48,10 +48,10 @@ export class GithubJob {
     }
 
     public addEnvironmentVariable(): void {
-        this.env.push(new EnvironmentVariable());
+        this.env.push(new KeyValuePair());
     }
 
-    public removeEnvironmentVariable(env: EnvironmentVariable): void {
+    public removeEnvironmentVariable(env: KeyValuePair): void {
         const indexOf = this.env.indexOf(env);
 
         if (indexOf !== -1) {

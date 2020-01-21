@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GithubAction } from 'src/app/models/action';
 import { GithubEvent, GithubEventType } from 'src/app/models/event';
 import * as YAML from 'yaml';
-import { EnvironmentVariable } from '../models/environmentVariable';
+import { KeyValuePair } from '../models/keyValuePair';
 import { GithubJob } from '../models/job';
 
 @Injectable({
@@ -61,10 +61,10 @@ export class GeneratorService {
     }
 
     public addEnvironmentVariable(): void {
-        this.input.env.push(new EnvironmentVariable());
+        this.input.env.push(new KeyValuePair());
     }
 
-    public removeEnvironmentVariable(env: EnvironmentVariable): void {
+    public removeEnvironmentVariable(env: KeyValuePair): void {
         const indexOf = this.input.env.indexOf(env);
 
         if (indexOf !== -1) {

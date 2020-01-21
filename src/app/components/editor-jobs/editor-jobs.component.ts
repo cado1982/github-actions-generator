@@ -18,4 +18,8 @@ export class EditorJobsComponent implements OnInit {
     public addJob(): void {
         this.generator.addJob();
     }
+
+    public removeJob(job: GithubJob): void {
+        this.generator.removeJob(job);
+    }
 }

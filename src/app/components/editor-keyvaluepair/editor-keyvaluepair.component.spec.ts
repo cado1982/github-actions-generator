@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditorEnvironmentComponent } from './editor-environment.component';
+import { EditorKeyValuePairComponent } from './editor-keyvaluepair.component';
 
-describe('EditorEnvironmentComponent', () => {
-  let component: EditorEnvironmentComponent;
-  let fixture: ComponentFixture<EditorEnvironmentComponent>;
+describe('EditorKeyValuePairComponent', () => {
+  let component: EditorKeyValuePairComponent;
+  let fixture: ComponentFixture<EditorKeyValuePairComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditorEnvironmentComponent ]
+      declarations: [ EditorKeyValuePairComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditorEnvironmentComponent);
+    fixture = TestBed.createComponent(EditorKeyValuePairComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
