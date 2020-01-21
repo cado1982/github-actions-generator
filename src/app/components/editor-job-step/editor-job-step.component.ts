@@ -1,0 +1,31 @@
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { GithubJobStep } from 'src/app/models/jobStep';
+import { EnvironmentVariable } from 'src/app/models/environmentVariable';
+
+@Component({
+    selector: 'app-editor-job-step',
+    templateUrl: './editor-job-step.component.html',
+    styleUrls: ['./editor-job-step.component.scss']
+})
+export class EditorJobStepComponent implements OnInit {
+    @Input() public step: GithubJobStep;
+    @Output() public remove = new EventEmitter<GithubJobStep>();
+
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+    public addEnvironmentVariable(): void {
+        this.step.env.push(new EnvironmentVariable());
+    }
+
+    public removeEnvironmentVariable(env: EnvironmentVariable): void {
+        const indexOf = this.step.env.indexOf(env);
+
+        if (indexOf !== -1) {
+            this.step.env.splice(indexOf, 1);
+        }
+    }
+
+}

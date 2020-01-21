@@ -1,0 +1,21 @@
+<div style="padding: 5px; border: 1px solid black">
+    <label>Id</label>
+    <input [(ngModel)]="job.id">
+    <br />
+    <label>Name</label>
+    <input [(ngModel)]="job.name">
+    <br />
+    <label>Needs</label>
+    <input [(ngModel)]="needs">
+    <br />
+    <label>Runs on</label>
+    <input [(ngModel)]="job.runsOn">
+    <br />
+    <label>If</label>
+    <input [(ngModel)]="job.if">
+    <br />
+    <label>Timeout minutes</label>
+    <input type="number" [(ngModel)]="job.timeoutMinutes">
+    <app-editor-environments [environments]="job.env" (remove)="removeEnvironmentVariable($event)" (add)="addEnvironmentVariable()"></app-editor-environments>
+    <app-editor-job-steps [steps]="job.steps" (add)="job.addStep()" (remove)="job.removeStep($event)"></app-editor-job-steps>
+</div>

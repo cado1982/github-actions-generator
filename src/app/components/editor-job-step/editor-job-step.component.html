@@ -1,0 +1,26 @@
+<div style="padding: 5px; border: 1px solid black">
+    <button (click)="remove.emit(step)">Remove step</button>
+    <br />
+    <label>Id</label>
+    <input [(ngModel)]="step.id">
+    <br />
+    <label>Name</label>
+    <input [(ngModel)]="step.name">
+    <br />
+    <label>Uses</label>
+    <input [(ngModel)]="step.uses">
+    <br />
+    <label>Run</label>
+    <input [(ngModel)]="step.run">
+    <br />
+    <label>Working Directory</label>
+    <input [(ngModel)]="step.workingDirectory">
+    <br />
+    <label>Shell</label>
+    <input [(ngModel)]="step.shell">
+    <br />
+    
+    <label>If</label>
+    <input [(ngModel)]="step.if">
+    <app-editor-environments [environments]="step.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-environments>
+</div>

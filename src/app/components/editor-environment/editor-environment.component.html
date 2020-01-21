@@ -1,0 +1,9 @@
+<div style="padding: 5px; border: 1px solid black">
+    <button (click)="remove.emit(environment)">Remove</button>
+    <br />
+    <label>Name</label>
+    <input [(ngModel)]="environment.key">
+    <br />
+    <label>Value</label>
+    <input [(ngModel)]="environment.value">
+</div>

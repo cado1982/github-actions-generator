@@ -1,0 +1,73 @@
+import { EnvironmentVariable } from './environmentVariable';
+import { GithubJobStep } from './jobStep';
+import { GithubJobStrategy } from './jobStrategy';
+import { GithubJobContainer } from './jobContainer';
+
+export class GithubJob {
+    public id = '';
+    public name = '';
+    public needs: string[] = [];
+    public runsOn: string;
+    public env: EnvironmentVariable[] = [];
+    public if = '';
+    public steps: GithubJobStep[] = [];
+    public timeoutMinutes: number | undefined;
+    public strategy: GithubJobStrategy | undefined;
+    public container: GithubJobContainer | undefined;
+    public services: GithubJobContainer[] = [];
+
+    public getObject(): any {
+        const result: any = {};
+        const value: any = {};
+
+        if (this.name) {
+            value.name = this.name.trim();
+        }
+        if (this.runsOn) {
+            value['runs-on'] = this.runsOn.trim();
+        }
+        if (this.needs && this.needs.length > 0) {
+            value.needs = this.needs.length === 1 ? this.needs[0] : this.needs;
+        }
+        if (this.env && this.env.length > 0) {
+            value.env = this.env.map(e => e.getObject());
+        }
+        if (this.if) {
+            value.if = this.if.trim();
+        }
+        if (this.timeoutMinutes > 0) {
+            value['timeout-minutes'] = this.timeoutMinutes;
+        }
+        if (this.steps && this.steps.length > 0) {
+            value.steps = this.steps.map(s => s.getObject());
+        }
+
+        result[this.id] = value;
+
+        return result;
+    }
+
+    public addEnvironmentVariable(): void {
+        this.env.push(new EnvironmentVariable());
+    }
+
+    public removeEnvironmentVariable(env: EnvironmentVariable): void {
+        const indexOf = this.env.indexOf(env);
+
+        if (indexOf !== -1) {
+            this.env.splice(indexOf, 1);
+        }
+    }
+
+    public addStep(): void {
+        this.steps.push(new GithubJobStep());
+    }
+
+    public removeStep(step: GithubJobStep): void {
+        const indexOf = this.steps.indexOf(step);
+
+        if (indexOf !== -1) {
+            this.steps.splice(indexOf, 1);
+        }
+    }
+}

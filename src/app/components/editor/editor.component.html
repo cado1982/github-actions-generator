@@ -1,12 +1,15 @@
 <form name="editorForm">
     <label>Name</label>
-    <input type="text" name="name" [(ngModel)]="generator.input.name" (ngModelChange)="onModelChange()">
+    <input type="text" name="name" [(ngModel)]="generator.input.name">
 
     <h4>Events</h4>
     <button (click)="generator.addEvent()">Add event</button>
     <div style="border: solid 1px black; padding: 5px;" *ngFor="let event of generator.input.on">
         <app-editor-event [event]="event"></app-editor-event>
     </div>
+
+    <app-editor-environments [environments]="generator.input.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-environments>
+    <app-editor-jobs [jobs]="generator.input.jobs"></app-editor-jobs>
 </form>
 
 <h4>generator.input</h4>

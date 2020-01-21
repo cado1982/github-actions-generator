@@ -1,3 +1,5 @@
+<button (click)="remove()">Remove event</button>
+<br />
 <label>Event</label>
 <select [(ngModel)]="event.type" name="type">
     <option *ngFor="let t of generator.types" [ngValue]="t">{{t.displayName}}</option>
@@ -5,7 +7,7 @@
 <br />
 <div *ngIf="event.type?.types?.length > 0">
     <label>Types</label>
-    <select name="types" multiple [(ngModel)]="event.types">
+    <select name="types" multiple [(ngModel)]="event.type.selectedTypes">
         <option *ngFor="let c of event.type?.types" [ngValue]="c">{{c}}</option>
     </select>
     <br />
@@ -29,6 +31,13 @@
     <br />
     <label>Ignored Paths</label>
     <input name="ignoredPaths" [(ngModel)]="event.pathsIgnore">
+    <br />
 </div>
+
+<div *ngIf="event.type?.internalName == 'schedule'">
+    <label>Cron</label>
+    <input name="cron" [(ngModel)]="event.cron">
+</div>
+
 
 <pre>{{event.type | json}}</pre>

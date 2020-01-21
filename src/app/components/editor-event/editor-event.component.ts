@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GithubEvent } from 'src/app/models/event';
 import { GeneratorService } from 'src/app/services/generator.service';
 
@@ -13,6 +13,10 @@ export class EditorEventComponent implements OnInit {
     constructor(public generator: GeneratorService) { }
 
     ngOnInit() {
+    }
+
+    public remove(): void {
+        this.generator.removeEvent(this.event);
     }
 
 }

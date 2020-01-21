@@ -1,49 +1,48 @@
 export class GithubEvent {
     public type: GithubEventType;
-    public types: string[] | undefined;
     public branches: string | undefined;
     public branchesIgnore: string | undefined;
     public tags: string | undefined;
     public tagsIgnore: string | undefined;
     public paths: string | undefined;
     public pathsIgnore: string | undefined;
-    public schedule: string | undefined;
+    public cron: string | undefined;
 
     public getObject(): any {
-        if (!this.types &&
+        if (!this.typesValid &&
             !this.branches &&
             !this.branchesIgnore &&
             !this.tags &&
             !this.tagsIgnore &&
             !this.paths &&
             !this.pathsIgnore &&
-            !this.schedule) {
+            !this.cronValid) {
                 return this.type.internalName;
         } else {
             const value: any = {};
-            if (this.types) {
-                value.types = this.types;
+            if (this.typesValid) {
+                value.types = this.type.selectedTypes;
             }
             if (this.branches && (this.type.internalName === 'push' || this.type.internalName === 'pull_request')) {
                 value.branches = this.branches;
             }
             if (this.branchesIgnore && (this.type.internalName === 'push' || this.type.internalName === 'pull_request')) {
-                value.branchesIgnore = this.branchesIgnore;
+                value['branches-ignore'] = this.branchesIgnore;
             }
             if (this.tags && (this.type.internalName === 'push' || this.type.internalName === 'pull_request')) {
                 value.tags = this.tags;
             }
             if (this.tagsIgnore && (this.type.internalName === 'push' || this.type.internalName === 'pull_request')) {
-                value.tagsIgnore = this.tagsIgnore;
+                value['tags-ignore'] = this.tagsIgnore;
             }
             if (this.paths && (this.type.internalName === 'push' || this.type.internalName === 'pull_request')) {
                 value.paths = this.paths;
             }
             if (this.pathsIgnore && (this.type.internalName === 'push' || this.type.internalName === 'pull_request')) {
-                value.pathsIgnore = this.pathsIgnore;
+                value['paths-ignore'] = this.pathsIgnore;
             }
-            if (this.schedule) {
-                value.schedule = this.schedule;
+            if (this.cronValid) {
+                value.cron = this.cron;
             }
 
             const result = {};
@@ -52,13 +51,17 @@ export class GithubEvent {
             return result;
         }
     }
+
+    private get typesValid(): boolean { return this.type && this.type.selectedTypes && this.type.selectedTypes.length > 0; }
+    private get cronValid(): boolean { return this.cron && this.type.internalName === 'schedule'; }
 }
 
 export class GithubEventType {
     constructor(
         public displayName: string,
         public internalName: string,
-        public types: string[]
+        public types: string[],
+        public selectedTypes: string[] = []
     ) {
 
     }
