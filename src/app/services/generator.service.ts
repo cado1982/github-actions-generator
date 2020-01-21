@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import * as jsyaml from 'js-yaml';
 import { GithubAction } from 'src/app/models/action';
 import { GithubEvent, GithubEventType } from 'src/app/models/event';
-
+import * as YAML from 'yaml';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +14,6 @@ export class GeneratorService {
     public types: any[] = [];
 
     constructor() {
-        this.input = new GithubAction();
         this.types = [
             new GithubEventType('Push', 'push', []),
             new GithubEventType('Pull Request', 'pull_request', [
@@ -34,20 +32,28 @@ export class GeneratorService {
                 'review_requested',
                 'review_request_removed'
             ]),
+            new GithubEventType('Create', 'create', [])
         ];
+
+        this.input = new GithubAction();
+        const event = new GithubEvent();
+        event.type = this.types[0];
+        this.input.on.push(event);
     }
 
     public generate() {
-        const results = jsyaml.safeDump(this.input.getObject(), {flowLevel: -1, noCompatMode: true});
-        this.results = results;
-        console.log(results);
+        const doc = new Document();
+        this.results = YAML.stringify(this.input.getObject());
     }
 
     public getResult(): string {
-        return `name: ${this.input.name}`;
+        const doc = new Document();
+        return YAML.stringify(this.input.getObject());
     }
 
     public addEvent() {
-        this.input.on.push(new GithubEvent());
+        const newEvent = new GithubEvent();
+        newEvent.type = this.types[0];
+        this.input.on.push(newEvent);
     }
 }
