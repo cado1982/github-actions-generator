@@ -25,6 +25,9 @@
     <label>Continue on error</label>
     <input type="checkbox" [(ngModel)]="step.continueOnError">
     <br />
+    <label>Timeout Minutes</label>
+    <input type="number" [(ngModel)]="step.timeoutMinutes">
+    <br />
     <h4>With</h4>
     <app-editor-job-step-with [with]="step.with"></app-editor-job-step-with>
     

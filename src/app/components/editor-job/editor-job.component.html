@@ -1,4 +1,5 @@
 <div style="padding: 5px; border: 1px solid black">
+    <h3>Job</h3>
     <button (click)="remove.emit(job)">Remove job</button>
     <br />
     <label>Id</label>
@@ -18,6 +19,9 @@
     <br />
     <label>Timeout minutes</label>
     <input type="number" [(ngModel)]="job.timeoutMinutes">
+    <h4>Environment Variables</h4>
     <app-editor-keyvaluepairs [values]="job.env" (remove)="removeEnvironmentVariable($event)" (add)="addEnvironmentVariable()"></app-editor-keyvaluepairs>
     <app-editor-job-steps [steps]="job.steps" (add)="job.addStep()" (remove)="job.removeStep($event)"></app-editor-job-steps>
+    <app-editor-job-strategy [strategy]="job.strategy"></app-editor-job-strategy>
+    <app-editor-job-container [container]="job.container"></app-editor-job-container>
 </div>

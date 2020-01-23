@@ -13,6 +13,9 @@ import { EditorJobComponent } from './components/editor-job/editor-job.component
 import { EditorJobStepsComponent } from './components/editor-job-steps/editor-job-steps.component';
 import { EditorJobStepComponent } from './components/editor-job-step/editor-job-step.component';
 import { EditorJobStepWithComponent } from './components/editor-job-step-with/editor-job-step-with.component';
+import { EditorJobStrategyComponent } from './components/editor-job-strategy/editor-job-strategy.component';
+import { EditorJobContainerComponent } from './components/editor-job-container/editor-job-container.component';
+import { EditorStringArrayComponent } from './components/editor-string-array/editor-string-array.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { EditorJobStepWithComponent } from './components/editor-job-step-with/ed
     EditorJobComponent,
     EditorJobStepsComponent,
     EditorJobStepComponent,
-    EditorJobStepWithComponent
+    EditorJobStepWithComponent,
+    EditorJobStrategyComponent,
+    EditorJobContainerComponent,
+    EditorStringArrayComponent
   ],
   imports: [
     BrowserModule,

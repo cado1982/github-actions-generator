@@ -45,7 +45,7 @@ export class GithubJobStep {
         if (this.timeoutMinutes > 0) {
             value['timeout-minutes'] = this.timeoutMinutes;
         }
-        if (this.with) {
+        if (this.with && (this.with.args || this.with.entrypoint) || (this.with.inputParameters.length > 0)) {
             value.with = this.with.getObject();
         }
 
@@ -56,6 +56,6 @@ export class GithubJobStep {
         } else {
             return value;
         }
-        
+
     }
 }

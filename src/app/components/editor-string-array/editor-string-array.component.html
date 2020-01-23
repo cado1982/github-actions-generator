@@ -1,0 +1,6 @@
+<button (click)="addValue()">Add</button>
+<br />
+<div *ngFor="let value of values">
+    <input type="text" [(ngModel)]="value">
+    <button (click)="removeValue(value)">Remove</button>
+</div>

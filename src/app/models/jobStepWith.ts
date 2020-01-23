@@ -9,10 +9,14 @@ export class JobStepWith {
         let value: any = {};
 
         if (this.inputParameters && this.inputParameters.length > 0) {
-            value = this.inputParameters.map(p => p.getObject());
+            value = this.inputParameters.filter(p => p.key).map(p => p.getObject());
         } else {
-            value.args = this.args;
-            value.entrypoint = this.entrypoint;
+            if (this.args) {
+                value.args = this.args;
+            }
+            if (this.entrypoint) {
+                value.entrypoint = this.entrypoint;
+            }
         }
 
         return value;

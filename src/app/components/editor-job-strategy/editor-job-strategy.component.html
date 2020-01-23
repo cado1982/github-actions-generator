@@ -1,0 +1,11 @@
+<div>
+    <h4>Strategy</h4>
+    <label>Fail Fast</label>
+    <input type="checkbox" [(ngModel)]="strategy.failFast">
+    <br />
+    <label>Max Parallel</label>
+    <input type="number" [(ngModel)]="strategy.maxParallel">
+    <br />
+    <label>Matrix</label>
+    <app-editor-keyvaluepairs [values]="strategy.matrix" (add)="addMatrix()" (remove)="removeMatrix($event)"></app-editor-keyvaluepairs>
+</div>
