@@ -4,6 +4,7 @@ import { GithubEvent, GithubEventType } from 'src/app/models/event';
 import * as YAML from 'yaml';
 import { KeyValuePair } from '../models/keyValuePair';
 import { GithubJob } from '../models/job';
+import eventTypes from '../models/eventTypes';
 
 @Injectable({
     providedIn: 'root'
@@ -11,34 +12,10 @@ import { GithubJob } from '../models/job';
 export class GeneratorService {
     public input: GithubAction;
 
-    public types: any[] = [];
-
     constructor() {
-        this.types = [
-            new GithubEventType('Push', 'push', []),
-            new GithubEventType('Pull Request', 'pull_request', [
-                'assigned',
-                'unassigned',
-                'labeled',
-                'unlabeled',
-                'opened',
-                'edited',
-                'closed',
-                'reopened',
-                'synchronize',
-                'ready_for_review',
-                'locked',
-                'unlocked',
-                'review_requested',
-                'review_request_removed'
-            ]),
-            new GithubEventType('Create', 'create', []),
-            new GithubEventType('Schedule', 'schedule', [])
-        ];
-
         this.input = new GithubAction();
         const event = new GithubEvent();
-        event.type = this.types[0];
+        event.type = eventTypes[0];
         this.input.on.push(event);
     }
 
@@ -48,7 +25,7 @@ export class GeneratorService {
 
     public addEvent() {
         const newEvent = new GithubEvent();
-        newEvent.type = this.types[0];
+        newEvent.type = eventTypes[0];
         this.input.on.push(newEvent);
     }
 

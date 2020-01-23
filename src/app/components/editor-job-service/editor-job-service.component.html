@@ -1,0 +1,17 @@
+<button (click)="remove.emit(container)">Remove</button>
+<br />
+<label>Name</label>
+<input type="text" [(ngModel)]="service.id">
+<br />
+<label>Image</label>
+<input type="text" [(ngModel)]="service.container.image">
+<br />
+<label>Options</label>
+<input type="text" [(ngModel)]="service.container.options">
+<h5>Environment Variables</h5>
+<app-editor-keyvaluepairs [values]="service.container.env" (add)="addEnvironmentVariable()"
+    (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
+<h5>Ports</h5>
+<app-editor-number-array [values]="service.container.ports"></app-editor-number-array>
+<h5>Volumes</h5>
+<app-editor-string-array [values]="service.container.volumes"></app-editor-string-array>

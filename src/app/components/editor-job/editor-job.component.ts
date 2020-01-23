@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GithubJob } from 'src/app/models/job';
 import { KeyValuePair } from 'src/app/models/keyValuePair';
+import { GithubJobContainer } from 'src/app/models/jobContainer';
+import { GithubJobService } from 'src/app/models/jobService';
 
 @Component({
     selector: 'app-editor-job',
@@ -35,6 +37,18 @@ export class EditorJobComponent implements OnInit {
 
     public removeEnvironmentVariable(env: KeyValuePair): void {
         this.job.removeEnvironmentVariable(env);
+    }
+
+    public addService(): void {
+        this.job.services.push(new GithubJobService());
+    }
+
+    public removeService(service: GithubJobService): void {
+        const indexOf = this.job.services.indexOf(service);
+
+        if (indexOf !== -1) {
+            this.job.services.splice(indexOf, 1);
+        }
     }
 
 }

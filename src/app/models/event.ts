@@ -1,12 +1,12 @@
 export class GithubEvent {
     public type: GithubEventType;
-    public branches: string | undefined;
-    public branchesIgnore: string | undefined;
-    public tags: string | undefined;
-    public tagsIgnore: string | undefined;
-    public paths: string | undefined;
-    public pathsIgnore: string | undefined;
-    public cron: string | undefined;
+    public branches = '';
+    public branchesIgnore = '';
+    public tags = '';
+    public tagsIgnore = '';
+    public paths = '';
+    public pathsIgnore = '';
+    public cron = '';
 
     public getObject(): any {
         if (!this.typesValid &&

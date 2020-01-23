@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GithubJobContainer } from 'src/app/models/jobContainer';
 import { KeyValuePair } from 'src/app/models/keyValuePair';
 

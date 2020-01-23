@@ -1,5 +1,4 @@
 import { GithubEvent } from './event';
-import * as YAML from 'yaml';
 import { KeyValuePair } from './keyValuePair';
 import { GithubJob } from './job';
 

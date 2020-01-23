@@ -23,5 +23,11 @@
     <app-editor-keyvaluepairs [values]="job.env" (remove)="removeEnvironmentVariable($event)" (add)="addEnvironmentVariable()"></app-editor-keyvaluepairs>
     <app-editor-job-steps [steps]="job.steps" (add)="job.addStep()" (remove)="job.removeStep($event)"></app-editor-job-steps>
     <app-editor-job-strategy [strategy]="job.strategy"></app-editor-job-strategy>
+    <hr />
+    <h4>Container</h4>
     <app-editor-job-container [container]="job.container"></app-editor-job-container>
+    <hr />
+    <h4>Services</h4>
+    <button (click)="addService()">Add service</button>
+    <app-editor-job-service *ngFor="let service of job.services" [service]="service" (remove)="removeService(service)"></app-editor-job-service>
 </div>

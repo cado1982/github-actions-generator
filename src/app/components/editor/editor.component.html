@@ -13,8 +13,4 @@
         <app-editor-keyvaluepairs [values]="generator.input.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
         <app-editor-jobs [jobs]="generator.input.jobs"></app-editor-jobs>
     </form>
-    
-    <h4>generator.input</h4>
-    <pre>{{generator.input | json}}</pre>
-    
 </div>

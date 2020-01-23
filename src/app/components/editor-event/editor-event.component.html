@@ -2,7 +2,7 @@
 <br />
 <label>Event</label>
 <select [(ngModel)]="event.type" name="type">
-    <option *ngFor="let t of generator.types" [ngValue]="t">{{t.displayName}}</option>
+    <option *ngFor="let t of types" [ngValue]="t">{{t.displayName}}</option>
 </select>
 <br />
 <div *ngIf="event.type?.types?.length > 0">
@@ -15,16 +15,14 @@
 
 <div *ngIf="event.type?.internalName == 'push' || event.type?.internalName == 'pull_request'">
     <label>Branches</label>
-    <input name="branches" [(ngModel)]="event.branches">
-    <br />
-    <label>Ignored Branches</label>
-    <input name="ignoredBranches" [(ngModel)]="event.branchesIgnore">
+    <input name="branches" [(ngModel)]="branches">
+    <label>Exclude</label>
+    <input type="checkbox" [(ngModel)]="branchesExcluded">
     <br />
     <label>Tags</label>
-    <input name="tags" [(ngModel)]="event.tags">
-    <br />
-    <label>Ignored Tags</label>
-    <input name="ignoredTags" [(ngModel)]="event.tagsIgnore">
+    <input name="tags" [(ngModel)]="tags">
+    <label>Exclude</label>
+    <input type="checkbox" [(ngModel)]="tagsExcluded">
     <br />
     <label>Paths</label>
     <input name="paths" [(ngModel)]="event.paths">

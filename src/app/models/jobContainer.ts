@@ -3,9 +3,9 @@ import { KeyValuePair } from './keyValuePair';
 export class GithubJobContainer {
     public image = '';
     public env: KeyValuePair[] = [];
-    public ports: number[] = [];
-    public volumes: string[] = [];
-    public options: string[] = [];
+    public ports: {value: number}[] = [];
+    public volumes: {value: string}[] = [];
+    public options = '';
 
     public getObject(): any {
         const result: any = {};
@@ -17,10 +17,10 @@ export class GithubJobContainer {
             result.env = this.env.map(e => e.getObject());
         }
         if (this.isPortsValid) {
-            result.ports = this.ports;
+            result.ports = this.ports.map(v => v.value);
         }
         if (this.isVolumesValid) {
-            result.volumes = this.volumes;
+            result.volumes = this.volumes.map(v => v.value);
         }
         if (this.isOptionsValid) {
             result.options = this.options;
@@ -54,6 +54,6 @@ export class GithubJobContainer {
     }
 
     private get isOptionsValid(): boolean {
-        return this.options && this.options.length > 0;
+        return !!this.options;
     }
 }

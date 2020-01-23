@@ -3,6 +3,7 @@ import { GithubJobStep } from './jobStep';
 import { GithubJobStrategy } from './jobStrategy';
 import { GithubJobContainer } from './jobContainer';
 import { JobStepWith } from './jobStepWith';
+import { GithubJobService } from './jobService';
 
 export class GithubJob {
     public id = '';
@@ -15,7 +16,7 @@ export class GithubJob {
     public timeoutMinutes: number | undefined;
     public strategy: GithubJobStrategy = new GithubJobStrategy();
     public container: GithubJobContainer = new GithubJobContainer();
-    public services: GithubJobContainer[] = [];
+    public services: GithubJobService[] = [];
 
     public getObject(): any {
         const result: any = {};
@@ -43,10 +44,13 @@ export class GithubJob {
             value.steps = this.steps.map(s => s.getObject());
         }
         if (this.strategy && this.strategy.matrix.length > 0 || this.strategy.failFast || this.strategy.maxParallel > 0) {
-            result.strategy = this.strategy.getObject();
+            value.strategy = this.strategy.getObject();
         }
         if (this.container.isValid()) {
-            result.container = this.container.getObject();
+            value.container = this.container.getObject();
+        }
+        if (this.services && this.services.length > 0) {
+            value.services = this.services.map(s => s.getObject());
         }
 
         result[this.id] = value;

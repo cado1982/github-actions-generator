@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./editor-string-array.component.scss']
 })
 export class EditorStringArrayComponent implements OnInit {
-    @Input() public values: string[];
+    @Input() public values: {value: string}[];
 
     constructor() { }
 
@@ -14,10 +14,10 @@ export class EditorStringArrayComponent implements OnInit {
     }
 
     public addValue(): void {
-        this.values.push('');
+        this.values.push({value: ''});
     }
 
-    public removeValue(value: string): void {
+    public removeValue(value: {value: string}): void {
         const indexOf = this.values.indexOf(value);
 
         if (indexOf !== -1) {

@@ -1,12 +1,13 @@
-<h4>Container</h4>
 <label>Image</label>
 <input type="text" [(ngModel)]="container.image">
 <br />
+<label>Options</label>
+<input type="text" [(ngModel)]="container.options">
+<br />
 <h5>Environment Variables</h5>
-<app-editor-keyvaluepairs [values]="container.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
+<app-editor-keyvaluepairs [values]="container.env" (add)="addEnvironmentVariable()"
+    (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
 <h5>Ports</h5>
-<app-editor-string-array [values]="container.ports"></app-editor-string-array>
+<app-editor-number-array [values]="container.ports"></app-editor-number-array>
 <h5>Volumes</h5>
 <app-editor-string-array [values]="container.volumes"></app-editor-string-array>
-<h5>Options</h5>
-<app-editor-string-array [values]="container.options"></app-editor-string-array>
