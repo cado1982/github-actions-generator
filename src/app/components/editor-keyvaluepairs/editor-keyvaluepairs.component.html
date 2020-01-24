@@ -1,3 +1,2 @@
-<button (click)="add.emit()">Add</button>
-<br />
+<button class="btn btn-primary" (click)="add.emit()">Add</button>
 <app-editor-keyvaluepair *ngFor="let value of values" [value]="value" (remove)="remove.emit($event)"></app-editor-keyvaluepair>

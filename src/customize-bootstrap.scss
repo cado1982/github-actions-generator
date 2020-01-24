@@ -1,0 +1,52 @@
+@import "colors.scss";
+
+$font-family-sans-serif: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$body-bg: $body-color;
+$body-color: $theme-dark-text; 
+
+//$primary: $theme-medium;
+
+$form-group-margin-bottom: 0.2rem;
+
+$input-font-size-xs: 0.7rem;
+$btn-font-size-xs: 0.7rem;
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+.form-control-xs {
+    height: $input-height-sm;
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    @include font-size($input-font-size-xs);
+    line-height: $input-line-height-sm;
+    @include border-radius($input-border-radius-sm);
+}
+
+.btn-xs {
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-xs, $btn-line-height-sm, $btn-border-radius-sm);
+}
+
+.btn-group-xs > .btn { @extend .btn-xs; }
+
+.col-form-label-xs {
+    padding-top: calc(#{$input-padding-y-sm} + #{$input-border-width});
+    padding-bottom: calc(#{$input-padding-y-sm} + #{$input-border-width});
+    @include font-size($input-font-size-xs);
+    line-height: $input-line-height-sm;
+}
+
+.table-xs {
+    th,
+    td {
+        padding: 0.2rem;
+        font-size: 0.8rem;
+    }
+}
+
+.ng-touched.ng-invalid {
+    @extend .is-invalid;
+}
+
+// .ng-valid {
+//     @extend .is-valid;
+// }

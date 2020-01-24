@@ -1,3 +1,5 @@
+import YAML from 'yaml';
+
 export class GithubEvent {
     public type: GithubEventType;
     public branches = '';
@@ -45,10 +47,7 @@ export class GithubEvent {
                 value.cron = this.cron;
             }
 
-            const result = {};
-            result[this.type.internalName] = value;
-
-            return result;
+            return YAML.createNode(value);
         }
     }
 

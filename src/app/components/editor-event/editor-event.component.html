@@ -1,34 +1,54 @@
-<button (click)="remove()">Remove event</button>
+<button class="btn btn-warning" (click)="remove()">Remove event</button>
 <br />
-<label>Event</label>
-<select [(ngModel)]="event.type" name="type">
-    <option *ngFor="let t of types" [ngValue]="t">{{t.displayName}}</option>
-</select>
-<br />
-<div *ngIf="event.type?.types?.length > 0">
-    <label>Types</label>
-    <select name="types" multiple [(ngModel)]="event.type.selectedTypes">
+<div class="form-group">
+    <label>Event</label>
+    <select class="custom-select" [(ngModel)]="event.type" name="type">
+        <option *ngFor="let t of types" [ngValue]="t">{{t.displayName}}</option>
+    </select>
+</div>
+<div class="form-group" *ngIf="event.type?.types?.length > 0">
+    <label for="types">Types</label>
+    <select class="custom-select" id="types" name="types" multiple [(ngModel)]="event.type.selectedTypes" size="8">
         <option *ngFor="let c of event.type?.types" [ngValue]="c">{{c}}</option>
     </select>
-    <br />
 </div>
 
 <div *ngIf="event.type?.internalName == 'push' || event.type?.internalName == 'pull_request'">
-    <label>Branches</label>
-    <input name="branches" [(ngModel)]="branches">
-    <label>Exclude</label>
-    <input type="checkbox" [(ngModel)]="branchesExcluded">
+    <div class="form-group">
+        <label for="branches">Branches</label>
+        <input id="branches" class="form-control" name="branches" [(ngModel)]="branches">
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="branchesExcluded" [(ngModel)]="branchesExcluded">
+        <label for="branchesExcluded">Exclude</label>
+    </div>
+    <div class="form-group">
+        
+    </div>
+    <div class="form-group">
+        <label>Tags</label>
+        <input class="form-control" name="tags" [(ngModel)]="tags">    
+    </div>
+    <div class="form-group">
+        
+    </div>
+    <div class="form-group">
+        
+    </div>
+    <div class="form-group">
+        
+    </div>
+    
     <br />
-    <label>Tags</label>
-    <input name="tags" [(ngModel)]="tags">
+    
     <label>Exclude</label>
-    <input type="checkbox" [(ngModel)]="tagsExcluded">
+    <input class="form-control" type="checkbox" [(ngModel)]="tagsExcluded">
     <br />
     <label>Paths</label>
-    <input name="paths" [(ngModel)]="event.paths">
+    <input class="form-control" name="paths" [(ngModel)]="event.paths">
     <br />
     <label>Ignored Paths</label>
-    <input name="ignoredPaths" [(ngModel)]="event.pathsIgnore">
+    <input class="form-control" name="ignoredPaths" [(ngModel)]="event.pathsIgnore">
     <br />
 </div>
 
@@ -36,6 +56,3 @@
     <label>Cron</label>
     <input name="cron" [(ngModel)]="event.cron">
 </div>
-
-
-<pre>{{event.type | json}}</pre>

@@ -30,6 +30,6 @@
     <br />
     <h4>With</h4>
     <app-editor-job-step-with [with]="step.with"></app-editor-job-step-with>
-    
+    <h4>Environment Variables</h4>
     <app-editor-keyvaluepairs [values]="step.env" (add)="addEnvironmentVariable()" (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
 </div>

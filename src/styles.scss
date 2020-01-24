@@ -1,4 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
+@import "colors.scss";
+@import "customize-bootstrap.scss";
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
 body {
-    margin: 0;
+  height: 100%;
+  font-size: 14px;
+}
+
+.is-good {
+  color: $money-good;
+}
+
+.is-bad {
+  color: $money-bad;
+}
+
+.is-neutral {
+    color: $theme-faded-text;
+}
+
+.is-good-light {
+    color: $money-good-saturated !important;
+}
+
+.is-bad-light {
+    color: $money-bad-saturated !important;
+}
+
+.badge.badge-success {
+  color: #fff;
+}
+
+.container {
+  margin: 40px;
+}
+
+.money-label {
+    height: 0.75rem;
+    border-radius: 0.5rem;
+    padding: 0 0.4rem;
+    background-color: $theme-background;
+    color: $theme-dark-text;
+    line-height: 1.7em;
+    font-weight: 500;
+}
+
+.money-label-negative {
+    color: $money-bad;
+}
+
+
+.ellipsis-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text-shadow-dark {
+    text-shadow: 0 0.05em 0.2em $shadow-color-dark;
+}
+
+.box-shadow-dark {
+    box-shadow: 0 0.2em 0.3em $shadow-color-dark;
+}
+
+.text-shadow-light {
+    text-shadow: 0 0.05em 0.2em $shadow-color-light;
+}
+
+.box-shadow-light {
+    box-shadow: 0 0.2em 0.3em $shadow-color-light;
+}
+
+// Make sure the drop downs always show on top of modals
+.drop {
+    z-index: 10000;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "types": "./src/lib/types/main.d.ts",
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.14",
@@ -19,7 +20,10 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "js-yaml": "^3.13.1",
+    "bootstrap": "4.3.1",
+    "jquery": "^3.4.1",
+    "@fortawesome/fontawesome-free": "^5.10.0",
+    "@ng-bootstrap/ng-bootstrap": "5.1.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "yaml": "^1.7.2",
@@ -34,7 +38,6 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/js-yaml": "^3.12.1",
     "@types/node": "~8.9.4",
-    "@types/yaml": "^1.2.0",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",

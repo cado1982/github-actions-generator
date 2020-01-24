@@ -18,7 +18,6 @@ import { EditorJobContainerComponent } from './components/editor-job-container/e
 import { EditorStringArrayComponent } from './components/editor-string-array/editor-string-array.component';
 import { EditorNumberArrayComponent } from './components/editor-number-array/editor-number-array.component';
 import { EditorJobServiceComponent } from './components/editor-job-service/editor-job-service.component';
-import { EditorJobStepRunComponent } from './components/editor-job-step-run/editor-job-step-run.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,7 @@ import { EditorJobStepRunComponent } from './components/editor-job-step-run/edit
     EditorJobContainerComponent,
     EditorStringArrayComponent,
     EditorNumberArrayComponent,
-    EditorJobServiceComponent,
-    EditorJobStepRunComponent
+    EditorJobServiceComponent
   ],
   imports: [
     BrowserModule,

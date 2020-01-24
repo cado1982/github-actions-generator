@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { GithubAction } from 'src/app/models/action';
 import { GithubEvent, GithubEventType } from 'src/app/models/event';
-import * as YAML from 'yaml';
 import { KeyValuePair } from '../models/keyValuePair';
 import { GithubJob } from '../models/job';
 import eventTypes from '../models/eventTypes';
+import YAML from 'yaml';
 
 @Injectable({
     providedIn: 'root'
@@ -19,8 +19,14 @@ export class GeneratorService {
         this.input.on.push(event);
     }
 
-    public getResult(): string {
-        return YAML.stringify(this.input.getObject());
+    public getResult(): any {
+        const contents = this.input.getObject();
+
+        const doc = new YAML.Document();
+        doc.contents = contents;
+        doc.commentBefore = ' Created by the GitHub Actions Generator ()';
+
+        return doc;
     }
 
     public addEvent() {

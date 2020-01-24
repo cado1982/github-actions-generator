@@ -12,6 +12,6 @@
 <app-editor-keyvaluepairs [values]="service.container.env" (add)="addEnvironmentVariable()"
     (remove)="removeEnvironmentVariable($event)"></app-editor-keyvaluepairs>
 <h5>Ports</h5>
-<app-editor-number-array [values]="service.container.ports"></app-editor-number-array>
+<app-editor-string-array [values]="service.container.ports"></app-editor-string-array>
 <h5>Volumes</h5>
 <app-editor-string-array [values]="service.container.volumes"></app-editor-string-array>

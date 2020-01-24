@@ -3,7 +3,7 @@ import { KeyValuePair } from './keyValuePair';
 export class GithubJobContainer {
     public image = '';
     public env: KeyValuePair[] = [];
-    public ports: {value: number}[] = [];
+    public ports: {value: string}[] = [];
     public volumes: {value: string}[] = [];
     public options = '';
 
@@ -17,7 +17,7 @@ export class GithubJobContainer {
             result.env = this.env.map(e => e.getObject());
         }
         if (this.isPortsValid) {
-            result.ports = this.ports.map(v => v.value);
+            result.ports = this.ports.map(v => this.mapPort(v.value));
         }
         if (this.isVolumesValid) {
             result.volumes = this.volumes.map(v => v.value);
@@ -27,6 +27,16 @@ export class GithubJobContainer {
         }
 
         return result;
+    }
+
+    // If it's just a number, return the number. Otherwise return the string
+    // This accepts both plain ports (5432), mappings (5432:80), and (5432/tcp)
+    private mapPort(port: string): any {
+        if (port.match(/^-{0,1}\d+$/)) {
+            return +port;
+          } else {
+            return port;
+          }
     }
 
     public isValid(): boolean {
