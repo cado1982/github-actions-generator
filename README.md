@@ -1,4 +1,8 @@
-# GithubActionsGenerator
+# Github Actions Generator
+
+**This project is incomplete and shouldn't be used in production**
+
+Angular site to generate GitHub Actions YAML workflow files.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
